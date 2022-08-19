@@ -15,7 +15,7 @@ RUN \
     pip3 install --no-cache-dir adafruit-circuitpython-dht; \
     pip3 install --no-cache-dir prometheus_client; \
     apk del --no-network --purge .build-deps
-    
+
 COPY main.py ./
 
 RUN chmod +x ./main.py

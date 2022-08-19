@@ -83,7 +83,7 @@ dht22_read_failures_total{city="mycity",country="mycountry",location="livingroom
 dht22_read_failures_created{city="mycity",country="mycountry",location="livingroom"} 1.660913631833311e+09
 ```
 
-## 
+##
 
 ## Known issues
 
