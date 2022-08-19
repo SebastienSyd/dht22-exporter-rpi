@@ -12,12 +12,12 @@ DHT_DATA_PIN = int(os.environ.get('GPIO_PIN_DHT22', 22))
 DHT_READ_TIMEOUT = float(os.environ.get('DHT22_SLEEPTIME', 15))
 PROMETHEUS_PORT = 9090
 PROMETHEUS_LABEL_NAMES = [
-  "location",
-  "city",
-  "country"
+  "room",
+  "location_name",
+  "location_country"
 ]
 PROMETHEUS_LABEL_VALUES = [
-  str(os.environ.get('PROMETHEUS_LABEL_LOCATION_VALUE', '')),
+  str(os.environ.get('PROMETHEUS_LABEL_ROOM_VALUE', '')),
   str(os.environ.get('PROMETHEUS_LABEL_CITY_VALUE', '')),
   str(os.environ.get('PROMETHEUS_LABEL_COUNTRY_VALUE', ''))
 ]
@@ -77,23 +77,23 @@ while True:
     logging.info("Temp: %s F / %s C    Humidity: %s%%" % (temperature_f, temperature_c, humidity))
 
     dht22_humidity.labels( \
-      location=PROMETHEUS_LABEL_VALUES[0], \
-      city=PROMETHEUS_LABEL_VALUES[1], \
-      country=PROMETHEUS_LABEL_VALUES[2] \
+      room=PROMETHEUS_LABEL_VALUES[0], \
+      location_name=PROMETHEUS_LABEL_VALUES[1], \
+      location_country=PROMETHEUS_LABEL_VALUES[2] \
     ) \
     .set('{0:0.1f}'.format(humidity))
 
     dht22_temperature_fahrenheit.labels( \
-      location=PROMETHEUS_LABEL_VALUES[0], \
-      city=PROMETHEUS_LABEL_VALUES[1], \
-      country=PROMETHEUS_LABEL_VALUES[2] \
+      room=PROMETHEUS_LABEL_VALUES[0], \
+      location_name=PROMETHEUS_LABEL_VALUES[1], \
+      location_country=PROMETHEUS_LABEL_VALUES[2] \
     ) \
     .set('{0:0.1f}'.format(temperature_f))
 
     dht22_temperature_celsius.labels( \
-      location=PROMETHEUS_LABEL_VALUES[0], \
-      city=PROMETHEUS_LABEL_VALUES[1], \
-      country=PROMETHEUS_LABEL_VALUES[2] \
+      room=PROMETHEUS_LABEL_VALUES[0], \
+      location_name=PROMETHEUS_LABEL_VALUES[1], \
+      location_country=PROMETHEUS_LABEL_VALUES[2] \
     ) \
     .set('{0:0.1f}'.format(temperature_c))
 
@@ -101,9 +101,9 @@ while True:
     # Errors happen fairly often, DHT's are hard to read, just keep going
     logging.error(error.args[0])
     dht22_read_failures.labels( \
-      location=PROMETHEUS_LABEL_VALUES[0], \
-      city=PROMETHEUS_LABEL_VALUES[1], \
-      country=PROMETHEUS_LABEL_VALUES[2] \
+      room=PROMETHEUS_LABEL_VALUES[0], \
+      location_name=PROMETHEUS_LABEL_VALUES[1], \
+      location_country=PROMETHEUS_LABEL_VALUES[2] \
     ) \
     .inc(1)
 

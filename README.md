@@ -68,19 +68,19 @@ process_open_fds 7.0
 process_max_fds 1.048576e+06
 # HELP dht22_temperature_celsius Temperature in celsius provided by dht sensor
 # TYPE dht22_temperature_celsius gauge
-dht22_temperature_celsius{city="mycity",country="mycountry",location="livingroom"} 28.3
+dht22_temperature_celsius{location_name="Paris",location_country="FR",location="livingroom"} 28.3
 # HELP dht22_temperature_fahrenheit Temperature in fahrenheit provided by dht sensor
 # TYPE dht22_temperature_fahrenheit gauge
-dht22_temperature_fahrenheit{city="mycity",country="mycountry",location="livingroom"} 82.9
+dht22_temperature_fahrenheit{location_name="Paris",location_country="FR",location="livingroom"} 82.9
 # HELP dht22_humidity Humidity in percents provided by dht sensor
 # TYPE dht22_humidity gauge
-dht22_humidity{city="mycity",country="mycountry",location="livingroom"} 59.4
+dht22_humidity{location_name="Paris",location_country="FR",location="livingroom"} 59.4
 # HELP dht22_read_failures_total Count of the DHT22 sensor read failures
 # TYPE dht22_read_failures_total counter
-dht22_read_failures_total{city="mycity",country="mycountry",location="livingroom"} 20.0
+dht22_read_failures_total{location_name="Paris",location_country="FR",location="livingroom"} 20.0
 # HELP dht22_read_failures_created Count of the DHT22 sensor read failures
 # TYPE dht22_read_failures_created gauge
-dht22_read_failures_created{city="mycity",country="mycountry",location="livingroom"} 1.660913631833311e+09
+dht22_read_failures_created{location_name="Paris",location_country="FR",location="livingroom"} 1.660913631833311e+09
 ```
 
 ##
