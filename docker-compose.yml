@@ -1,0 +1,18 @@
+version: '3.4'
+services:
+  sensor:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: dht22_exporter_rpi
+    restart: 'unless-stopped'
+    ports:
+    - "9090:9090"
+    devices:
+      - /dev/gpiomem
+    environment:
+      GPIO_PIN_DHT22: ${GPIO_PIN_DHT22:-4}
+      DHT22_SLEEPTIME: ${DHT22_SLEEPTIME:-60}
+      PROMETHEUS_LABEL_LOCATION_VALUE: ${PROMETHEUS_LABEL_LOCATION_VALUE:-null}
+      PROMETHEUS_LABEL_CITY_VALUE: ${PROMETHEUS_LABEL_CITY_VALUE:-null}
+      PROMETHEUS_LABEL_COUNTRY_VALUE: ${PROMETHEUS_LABEL_COUNTRY_VALUE:-null}
